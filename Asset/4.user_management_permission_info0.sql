@@ -1,2 +1,0 @@
-
-INSERT INTO user_management.`permission_info` VALUES (1,'2024-10-07 09:11:33.000000',1,_binary '\0','VIEW_DETAILS','view details'),(2,'2024-10-07 09:11:33.000000',1,_binary '\0','EDIT','edit'),(3,'2024-10-07 09:11:33.000000',1,_binary '\0','ADD','add'),(4,'2024-10-07 09:11:33.000000',1,_binary '\0','VIEW_LIST','view list'),(5,'2024-10-07 09:11:33.000000',1,_binary '\0','SEARCH','search'),(6,'2024-10-07 09:11:33.000000',1,_binary '\0','DELETE','delete');
