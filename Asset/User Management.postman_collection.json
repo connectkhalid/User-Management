@@ -1,0 +1,520 @@
+{
+	"info": {
+		"_postman_id": "a5f0feea-6d15-4959-a853-c04aec984755",
+		"name": "User Management",
+		"description": "This is API collection of a Spring Boot application providing backend APIs for a user management. It includes features like **authentication and authorization** and essential **CRUD operations**.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29496949"
+	},
+	"item": [
+		{
+			"name": "Public API",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mailAddress\": \"sazid14@bjitgroup.com\",\r\n    \"password\": \"Sr@123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "GameGird-Token {{GameGird-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Public API list"
+		},
+		{
+			"name": "Private API",
+			"item": [
+				{
+					"name": "Admin Feature API",
+					"item": [
+						{
+							"name": "Register-User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\" : \"nyaeem\",\r\n    \"lastName\" : \"khan\",\r\n    \"username\" : \"nayeem@gmail.com\",\r\n    \"password\": \"Sr@123456\",\r\n    \"phoneNumber\": \"01799919647\",\r\n    \"location\": \"Dhaka\",\r\n    \"roleCode\" : 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/private/register-user-account",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"register-user-account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register-Admin",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\" : \"Sazid\",\r\n    \"lastName\" : \"Rafi\",\r\n    \"username\" : \"rafi222@gmail.com\",\r\n    \"password\": \"Sr@123456\",\r\n    \"phoneNumber\": \"01799919647\",\r\n    \"location\": \"Dhaka\",\r\n    \"roleCode\" : 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/private/register-account",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"register-account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-admin-list",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8081/api/private/get-admin-list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"get-admin-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-user-list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/private/get-user-list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"get-user-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update-info",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"adminId\" : 11,\r\n    \"firstName\" : \"Hasnat\",\r\n    \"lastName\" : \"Rabbani\",\r\n    \"phoneNumber\": \"01799919875\",\r\n    \"location\": \"Dhaka\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/private/update-admin-info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"update-admin-info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete-admin-info",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"adminId\" : 17\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/private/delete-admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"delete-admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete-user-info",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"userId\" : 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/private/delete-user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"delete-user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get-admin-info",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"adminId\" : 9\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/private/get-admin-info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"get-admin-info"
+									],
+									"query": [
+										{
+											"key": "adminId",
+											"value": "9",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "search-in-admin",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "GameGird-Token {{GameGird-access-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8081/api/private/get-admin-info?adminId=10&",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"private",
+										"get-admin-info"
+									],
+									"query": [
+										{
+											"key": "adminId",
+											"value": "10"
+										},
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "GameGird-access-key",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraGFsaWRoN0BnbWFpbC5jb20iLCJyb2xlcyI6IkFETUlOX0EiLCJpYXQiOjE3Mzg3ODQ0NjIsImV4cCI6MTczODg3MDg2Mn0.gZytiBZxcNQFKkk936vuZThXBqDvWsErMRsTLgmN4NpW2Nj-AjtoPyYztWCvFs-ngUmIxh-Hc7V7_PDMLvIEPA",
+			"type": "string"
+		}
+	]
+}
