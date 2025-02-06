@@ -54,10 +54,18 @@ public class AccountServiceImpl implements AccountService {
 
         // If the role is ADMIN_A (2) or ADMIN_B (3), check if the current user is a Super Admin
         if ((roleInfo.getRoleCode() == 2 || roleInfo.getRoleCode() == 3) && currentUserAccountInfo.get().getRoleInfoId()!=1) {
+//            if (currentUserAccountInfo.isEmpty()) {
                 log.info("Unauthorized access attempt.");
                 throw new AccountServiceException(RestResponseMessage.ACCESS_DENIED,
                         RestResponseStatusCode.NOT_FOUND_STATUS, RestErrorMessageDetail.NO_PERMISSION_ERROR_MESSAGE);
             }
+
+//            // Check if the current user is a super admin (role code 1)
+//            if (currentUserRoleCode == 1) {
+//                log.info("Super Admin cannot create ADMIN_A or ADMIN_B.");
+//                throw new AccountServiceException(RestResponseMessage.BAD_REQUEST, RestResponseStatusCode.BAD_REQUEST_STATUS, RestErrorMessageDetail.SUPER_ADMIN_CREATE_ERROR_MESSAGE);
+//            }
+//        }
 
         if (roleInfo.getRoleCode() == 4) {
             // Check if the current user has permission to create a user (ADMIN_A or ADMIN_B)
@@ -131,6 +139,8 @@ public class AccountServiceImpl implements AccountService {
                 .map(AccountResponse::fromAccountInfo) //Using static method to map
                 .collect(Collectors.toList());
     }
+
+
 
     @Override
     public AccountResponse getUserInfo(long adminId) throws AuthServiceException {
@@ -231,6 +241,7 @@ public class AccountServiceImpl implements AccountService {
         return AccountResponse.fromAccountInfo(targetUser);
     }
 
+
     @Override
     public AccountResponse deleteUser(long adminId) throws AuthServiceException {
         Optional<AccountInfo> currentUserAccountInfo = accountInfoRepository.findByAccessKey(authCommonService.getAccessKey());
@@ -290,6 +301,7 @@ public class AccountServiceImpl implements AccountService {
         return AccountResponse.fromAccountInfo(targetUser);
     }
 
+
     @Override
     public List<AccountResponse> searchByKeyword(String keyword, int page, int size) throws AccountServiceException {
         // Adjust the page number to be zero-based
@@ -315,4 +327,5 @@ public class AccountServiceImpl implements AccountService {
                         .build())
                 .collect(Collectors.toList());
     }
+
 }

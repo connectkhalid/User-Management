@@ -142,7 +142,7 @@ public class AccountController {
 
         log.info("START execute.");
 
-        // Handle null case by providing a default value (e.g., 0)
+        // Handle null case by providing a default value (e.g: id, 0)
         long adminId = (adminIdInput != null) ? adminIdInput.getAdminId() : 0;
 
         AccountService.AccountResponse toAccountDataResponse = accountService.getUserInfo(adminId);
@@ -180,10 +180,8 @@ public class AccountController {
             @RequestParam(value = "page", defaultValue = "1", required = false) int page,
             @RequestParam(value = "size", defaultValue = "3", required = false) int size) throws AccountServiceException, AuthServiceException {
 
-        // Call service to get paginated results
         List<AccountService.AccountResponse> searchResults = accountService.searchByKeyword(keyword, page, size);
 
-        // Include pagination metadata in the response if necessary
         return buildResponseWithDetails(RestResponseStatusCode.OK_STATUS, RestResponseMessage.FETCH_OK, searchResults);
     }
 
