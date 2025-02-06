@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,4 +55,7 @@ public interface AccountInfoRepository extends JpaRepository<AccountInfo, Long>{
             "OR LOWER(a.location) LIKE LOWER(CONCAT('%', :searchTerm, '%'))) " +
             "AND a.deleteFlg = false")
     Page<AccountInfo> searchAdmin(@Param("searchTerm") String searchTerm, Pageable pageable);
+
+    @Query("SELECT a FROM AccountInfo a WHERE a.username = :username")
+    Optional<AccountInfo> findByUsername(String username);
 }
